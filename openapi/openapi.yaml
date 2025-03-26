@@ -1,0 +1,21 @@
+openapi: 3.0.3
+info:
+  title: Payle API
+  version: 1.0.0
+  description: Documentação da API do Payle.
+
+servers:
+  - url: https://api.payle.digital
+    description: Produção
+    variables:
+      api_key:
+        default: demo
+        description: Chave de autenticação
+
+paths:
+  /account:
+    $ref: './routes/account/account.yaml#/paths/~1account'
+  /account/balance:
+    $ref: './routes/account/account.yaml#/paths/~1account~1balance'
+  /account/fees:
+    $ref: './routes/account/account.yaml#/paths/~1account~1fees'

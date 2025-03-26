@@ -1,0 +1,87 @@
+paths:
+  /account:
+    get:
+      summary: Obter informações da conta
+      operationId: getAccount
+      tags:
+        - Account
+      responses:
+        '200':
+          description: Dados da conta retornados com sucesso.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+  /account/balance:
+    get:
+      summary: Obter saldo da conta
+      operationId: getAccountBalance
+      tags:
+        - Account
+      responses:
+        '200':
+          description: Saldo atual da conta.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountBalance'
+  /account/fees:
+    get:
+      summary: Obter taxas da conta
+      operationId: getAccountFees
+      tags:
+        - Account
+      responses:
+        '200':
+          description: Lista de taxas aplicadas à conta.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountFees'
+
+components:
+  schemas:
+    Account:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: "acc_123456789"
+        name:
+          type: string
+          example: "Loja XPTO"
+        email:
+          type: string
+          format: email
+          example: "contato@lojaxpto.com"
+        createdAt:
+          type: string
+          format: date-time
+          example: "2025-03-26T12:00:00Z"
+    AccountBalance:
+      type: object
+      properties:
+        available:
+          type: number
+          format: float
+          example: 1492.35
+        pending:
+          type: number
+          format: float
+          example: 350.00
+    AccountFees:
+      type: object
+      properties:
+        pix:
+          type: number
+          format: float
+          example: 0.85
+        boleto:
+          type: number
+          format: float
+          example: 2.50
+        card:
+          type: number
+          format: float
+          example: 3.79
