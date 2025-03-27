@@ -5,8 +5,8 @@ management:
   docVersion: 1.0.0
   speakeasyVersion: 1.525.0
   generationVersion: 2.562.2
-  releaseVersion: 0.0.5
-  configChecksum: 122ddbf43ad2c2f6143b99c12f0e7c20
+  releaseVersion: 0.0.6
+  configChecksum: c7e9d92426f9088228c180d38ba548aa
   repoURL: https://github.com/payle-digital/payle-api-docs.git
   installationURL: https://github.com/payle-digital/payle-api-docs
   published: true
