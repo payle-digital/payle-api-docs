@@ -1,0 +1,11 @@
+{
+  "name": "Payle API",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "API Reference",
+        "openapi": "./openapi/openapi.json"
+      }
+    ]
+  }
+}
