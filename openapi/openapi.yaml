@@ -9,7 +9,7 @@ servers:
     description: Produção
     variables:
       api_key:
-        default: demo
+        default: ''
         description: Chave de autenticação
 
 paths:
