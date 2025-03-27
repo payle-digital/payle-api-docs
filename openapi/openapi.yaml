@@ -7,10 +7,17 @@ info:
 servers:
   - url: https://api.payle.digital
     description: Produção
-    variables:
-      api-key:
-        default: ''
-        description: Chave de autenticação
+
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      name: api-key
+      description: Chave de autenticação
+      in: header
+
+security:
+  - apiKeyAuth: []
 
 paths:
   /account:

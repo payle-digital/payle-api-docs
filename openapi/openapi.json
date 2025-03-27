@@ -8,13 +8,12 @@
   "servers": [
     {
       "url": "https://api.payle.digital",
-      "description": "Produção",
-      "variables": {
-        "api-key": {
-          "default": "",
-          "description": "Chave de autenticação"
-        }
-      }
+      "description": "Produção"
+    }
+  ],
+  "security": [
+    {
+      "apiKeyAuth": []
     }
   ],
   "paths": {
@@ -83,6 +82,14 @@
     }
   },
   "components": {
+    "securitySchemes": {
+      "apiKeyAuth": {
+        "type": "apiKey",
+        "name": "api-key",
+        "description": "Chave de autenticação",
+        "in": "header"
+      }
+    },
     "schemas": {
       "Account": {
         "type": "object",
