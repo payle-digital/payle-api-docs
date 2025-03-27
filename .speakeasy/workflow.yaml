@@ -10,6 +10,9 @@ targets:
     payle-ts-sdk:
         target: typescript
         source: payle-api-docs
+        publish:
+            npm:
+                token: $npm_token
         codeSamples:
             registry:
                 location: registry.speakeasyapi.dev/payle/payle-api/payle-api-docs-typescript-code-samples
