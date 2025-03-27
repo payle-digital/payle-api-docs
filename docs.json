@@ -15,7 +15,7 @@
     "tabs": [
       {
         "tab": "API Reference",
-        "openapi": "./openapi/openapi.json"
+        "openapi": "https://spec.speakeasy.com/payle/payle-api/payle-api-docs-with-code-samples"
       }
     ]
   }
