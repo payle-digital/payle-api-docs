@@ -2,20 +2,19 @@ speakeasyVersion: 1.525.0
 sources:
     payle-api-docs:
         sourceNamespace: payle-api-docs
-        sourceRevisionDigest: sha256:a80e9e44a9caa7d53b881fa0ac981fffa76dcc68a622fce2d710b0c100b7e65d
+        sourceRevisionDigest: sha256:abd48fb229731eef4100c8eb4bcb7871f4d443b9ca61f6780fbec0e97ac613b2
         sourceBlobDigest: sha256:3215f5a34e567058e5a7354aee8d1dfb7f5d2d673f681b1e3fe9428b105ba9c5
         tags:
             - latest
-            - speakeasy-sdk-regen-1743037765
             - 1.0.0
 targets:
     payle-ts-sdk:
         source: payle-api-docs
         sourceNamespace: payle-api-docs
-        sourceRevisionDigest: sha256:a80e9e44a9caa7d53b881fa0ac981fffa76dcc68a622fce2d710b0c100b7e65d
+        sourceRevisionDigest: sha256:abd48fb229731eef4100c8eb4bcb7871f4d443b9ca61f6780fbec0e97ac613b2
         sourceBlobDigest: sha256:3215f5a34e567058e5a7354aee8d1dfb7f5d2d673f681b1e3fe9428b105ba9c5
         codeSamplesNamespace: payle-api-docs-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:62e91f19af33762009f9e836e3b2f96b16e38a5dc518ec6b907253fbc8927130
+        codeSamplesRevisionDigest: sha256:f932c36acd0898a94ff981eca94588041619f3f82ea3d86215c801c7a1e4c47a
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

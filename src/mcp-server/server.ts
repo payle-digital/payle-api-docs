@@ -27,7 +27,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Payle",
-    version: "0.0.4",
+    version: "0.0.5",
   });
 
   const client = new PayleCore({
