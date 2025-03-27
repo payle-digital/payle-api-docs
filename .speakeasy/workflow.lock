@@ -1,0 +1,36 @@
+speakeasyVersion: 1.524.0
+sources:
+    payle-api-docs:
+        sourceNamespace: payle-api-docs
+        sourceRevisionDigest: sha256:c2cfadfe413366f564f6fe11f4aedc12365011d40e7bc9a12dfe68d82fd84486
+        sourceBlobDigest: sha256:3215f5a34e567058e5a7354aee8d1dfb7f5d2d673f681b1e3fe9428b105ba9c5
+        tags:
+            - latest
+            - 1.0.0
+targets:
+    payle-ts-sdk:
+        source: payle-api-docs
+        sourceNamespace: payle-api-docs
+        sourceRevisionDigest: sha256:c2cfadfe413366f564f6fe11f4aedc12365011d40e7bc9a12dfe68d82fd84486
+        sourceBlobDigest: sha256:3215f5a34e567058e5a7354aee8d1dfb7f5d2d673f681b1e3fe9428b105ba9c5
+        codeSamplesNamespace: payle-api-docs-typescript-code-samples
+        codeSamplesRevisionDigest: sha256:6731024884965bae356d968c8d6c9354385ab4024e241812aaa960e1a77a6e1d
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        payle-api-docs:
+            inputs:
+                - location: https://raw.githubusercontent.com/payle-digital/payle-api-docs/main/openapi/openapi.json
+            registry:
+                location: registry.speakeasyapi.dev/payle/payle-api/payle-api-docs
+    targets:
+        payle-ts-sdk:
+            target: typescript
+            source: payle-api-docs
+            codeSamples:
+                registry:
+                    location: registry.speakeasyapi.dev/payle/payle-api/payle-api-docs-typescript-code-samples
+                labelOverride:
+                    fixedValue: Typescript (SDK)
+                blocking: false

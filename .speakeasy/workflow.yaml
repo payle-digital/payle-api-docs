@@ -1,0 +1,18 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    payle-api-docs:
+        inputs:
+            - location: https://raw.githubusercontent.com/payle-digital/payle-api-docs/main/openapi/openapi.json
+        registry:
+            location: registry.speakeasyapi.dev/payle/payle-api/payle-api-docs
+targets:
+    payle-ts-sdk:
+        target: typescript
+        source: payle-api-docs
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/payle/payle-api/payle-api-docs-typescript-code-samples
+            labelOverride:
+                fixedValue: Typescript (SDK)
+            blocking: false

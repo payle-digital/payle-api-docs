@@ -77,10 +77,10 @@ Add the following server definition to your `claude_desktop_config.json` file:
 ```json
 {
   "mcpServers": {
-    "SDK": {
+    "Payle": {
       "command": "npx",
       "args": [
-        "-y", "--package", "openapi",
+        "-y", "--package", "payle-docs",
         "--",
         "mcp", "start"
       ]
@@ -99,10 +99,10 @@ Create a `.cursor/mcp.json` file in your project root with the following content
 ```json
 {
   "mcpServers": {
-    "SDK": {
+    "Payle": {
       "command": "npx",
       "args": [
-        "-y", "--package", "openapi",
+        "-y", "--package", "payle-docs",
         "--",
         "mcp", "start"
       ]
@@ -140,7 +140,7 @@ If the repo is a private repo you must add your Github PAT to download a release
 For a full list of server arguments, run:
 
 ```sh
-npx -y --package openapi -- mcp start --help
+npx -y --package payle-docs -- mcp start --help
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -156,12 +156,12 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 ### Example
 
 ```typescript
-import { SDK } from "openapi";
+import { Payle } from "payle-docs";
 
-const sdk = new SDK();
+const payle = new Payle();
 
 async function run() {
-  const result = await sdk.account.getAccount();
+  const result = await payle.account.getAccount();
 
   // Handle the result
   console.log(result);
@@ -217,12 +217,12 @@ Some of the endpoints in this SDK support retries.  If you use the SDK without a
 
 To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
 ```typescript
-import { SDK } from "openapi";
+import { Payle } from "payle-docs";
 
-const sdk = new SDK();
+const payle = new Payle();
 
 async function run() {
-  const result = await sdk.account.getAccount({
+  const result = await payle.account.getAccount({
     retries: {
       strategy: "backoff",
       backoff: {
@@ -245,9 +245,9 @@ run();
 
 If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
 ```typescript
-import { SDK } from "openapi";
+import { Payle } from "payle-docs";
 
-const sdk = new SDK({
+const payle = new Payle({
   retryConfig: {
     strategy: "backoff",
     backoff: {
@@ -261,7 +261,7 @@ const sdk = new SDK({
 });
 
 async function run() {
-  const result = await sdk.account.getAccount();
+  const result = await payle.account.getAccount();
 
   // Handle the result
   console.log(result);
@@ -282,15 +282,15 @@ If the request fails due to, for example 4XX or 5XX status codes, it will throw 
 | errors.APIError | 4XX, 5XX    | \*/\*        |
 
 ```typescript
-import { SDK } from "openapi";
-import { SDKValidationError } from "openapi/models/errors";
+import { Payle } from "payle-docs";
+import { SDKValidationError } from "payle-docs/models/errors";
 
-const sdk = new SDK();
+const payle = new Payle();
 
 async function run() {
   let result;
   try {
-    result = await sdk.account.getAccount();
+    result = await payle.account.getAccount();
 
     // Handle the result
     console.log(result);
@@ -351,14 +351,14 @@ The default server `https://api.payle.digital` contains variables and is set to 
 #### Example
 
 ```typescript
-import { SDK } from "openapi";
+import { Payle } from "payle-docs";
 
-const sdk = new SDK({
+const payle = new Payle({
   apiKey: "279811",
 });
 
 async function run() {
-  const result = await sdk.account.getAccount();
+  const result = await payle.account.getAccount();
 
   // Handle the result
   console.log(result);
@@ -372,14 +372,14 @@ run();
 
 The default server can be overridden globally by passing a URL to the `serverURL: string` optional parameter when initializing the SDK client instance. For example:
 ```typescript
-import { SDK } from "openapi";
+import { Payle } from "payle-docs";
 
-const sdk = new SDK({
+const payle = new Payle({
   serverURL: "https://api.payle.digital",
 });
 
 async function run() {
-  const result = await sdk.account.getAccount();
+  const result = await payle.account.getAccount();
 
   // Handle the result
   console.log(result);
@@ -408,8 +408,8 @@ custom header and a timeout to requests and how to use the `"requestError"` hook
 to log errors:
 
 ```typescript
-import { SDK } from "openapi";
-import { HTTPClient } from "openapi/lib/http";
+import { Payle } from "payle-docs";
+import { HTTPClient } from "payle-docs/lib/http";
 
 const httpClient = new HTTPClient({
   // fetcher takes a function that has the same signature as native `fetch`.
@@ -435,7 +435,7 @@ httpClient.addHook("requestError", (error, request) => {
   console.groupEnd();
 });
 
-const sdk = new SDK({ httpClient });
+const sdk = new Payle({ httpClient });
 ```
 <!-- End Custom HTTP Client [http-client] -->
 
@@ -450,9 +450,9 @@ You can pass a logger that matches `console`'s interface as an SDK option.
 > Beware that debug logging will reveal secrets, like API tokens in headers, in log messages printed to a console or files. It's recommended to use this feature only during local development and not in production.
 
 ```typescript
-import { SDK } from "openapi";
+import { Payle } from "payle-docs";
 
-const sdk = new SDK({ debugLogger: console });
+const sdk = new Payle({ debugLogger: console });
 ```
 <!-- End Debugging [debug] -->
 
