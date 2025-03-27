@@ -10,7 +10,7 @@
       "url": "https://api.payle.digital",
       "description": "Produção",
       "variables": {
-        "api_key": {
+        "api-key": {
           "default": "",
           "description": "Chave de autenticação"
         }
