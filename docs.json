@@ -1,5 +1,14 @@
 {
   "name": "Payle API",
+  "logo": {
+    "href": "https://payle.digital/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fpayle-logo.c998a4bc.jpeg&w=32&q=75"
+  },
+  "theme": "mint",
+  "colors": {
+    "primary": "#2AB673",
+    "light": "#55D799",
+    "dark": "#117866"
+  },
   "navigation": {
     "tabs": [
       {
