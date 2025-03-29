@@ -19,9 +19,9 @@ interface StartCommandFlags {
   readonly port: number;
   readonly tool?: string[];
   readonly scope?: MCPScope[];
+  readonly "api-key-auth"?: string | undefined;
   readonly "server-url"?: string;
   readonly "server-index"?: SDKOptions["serverIdx"];
-  readonly "api-key"?: SDKOptions["apiKey"];
   readonly "log-level": ConsoleLoggerLevel;
   readonly env?: [string, string][];
 }
@@ -50,9 +50,9 @@ async function startStdio(flags: StartCommandFlags) {
     logger,
     allowedTools: flags.tool,
     scopes: flags.scope,
+    ...{ apiKeyAuth: flags["api-key-auth"] },
     serverURL: flags["server-url"],
     serverIdx: flags["server-index"],
-    apiKey: flags["api-key"],
   });
   await server.connect(transport);
 
@@ -71,9 +71,9 @@ async function startSSE(flags: StartCommandFlags) {
     logger,
     allowedTools: flags.tool,
     scopes: flags.scope,
+    ...{ apiKeyAuth: flags["api-key-auth"] },
     serverURL: flags["server-url"],
     serverIdx: flags["server-index"],
-    apiKey: flags["api-key"],
   });
   let transport: SSEServerTransport | undefined;
   const controller = new AbortController();

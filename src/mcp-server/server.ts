@@ -22,18 +22,18 @@ export function createMCPServer(deps: {
   allowedTools?: string[] | undefined;
   scopes?: MCPScope[] | undefined;
   serverURL?: string | undefined;
+  apiKeyAuth?: SDKOptions["apiKeyAuth"] | undefined;
   serverIdx?: SDKOptions["serverIdx"] | undefined;
-  apiKey?: SDKOptions["apiKey"] | undefined;
 }) {
   const server = new McpServer({
     name: "Payle",
-    version: "0.0.7",
+    version: "0.1.0",
   });
 
   const client = new PayleCore({
+    apiKeyAuth: deps.apiKeyAuth,
     serverURL: deps.serverURL,
     serverIdx: deps.serverIdx,
-    apiKey: deps.apiKey,
   });
 
   const scopes = new Set(deps.scopes ?? mcpScopes);

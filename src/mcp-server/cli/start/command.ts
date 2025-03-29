@@ -49,6 +49,14 @@ export const startCommand = buildCommand({
           },
         }
         : {}),
+      "api-key-auth": {
+        kind: "parsed",
+        brief: "Sets the apiKeyAuth auth field for the API",
+        optional: true,
+        parse: (value) => {
+          return z.string().parse(value);
+        },
+      },
       "server-url": {
         kind: "parsed",
         brief: "Overrides the default server URL used by the SDK",
@@ -60,12 +68,6 @@ export const startCommand = buildCommand({
         brief: "Selects a predefined server used by the SDK",
         optional: true,
         parse: numberParser,
-      },
-      "api-key": {
-        kind: "parsed",
-        brief: "Sets the api_key variable for url substitution",
-        optional: true,
-        parse: (value) => value,
       },
       "log-level": {
         kind: "enum",
