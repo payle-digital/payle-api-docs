@@ -25,7 +25,9 @@ import { SDKValidationError } from "payle-docs/models/errors/sdkvalidationerror.
 
 // Use `PayleCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const payle = new PayleCore();
+const payle = new PayleCore({
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
 
 async function run() {
   const res = await accountGetAccount(payle);
