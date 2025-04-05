@@ -18,7 +18,9 @@ Obter informações da conta
 ```typescript
 import { Payle } from "payle-docs";
 
-const payle = new Payle();
+const payle = new Payle({
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
 
 async function run() {
   const result = await payle.account.getAccount();
@@ -40,7 +42,9 @@ import { accountGetAccount } from "payle-docs/funcs/accountGetAccount.js";
 
 // Use `PayleCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const payle = new PayleCore();
+const payle = new PayleCore({
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
 
 async function run() {
   const res = await accountGetAccount(payle);
@@ -85,7 +89,9 @@ Obter saldo da conta
 ```typescript
 import { Payle } from "payle-docs";
 
-const payle = new Payle();
+const payle = new Payle({
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
 
 async function run() {
   const result = await payle.account.getAccountBalance();
@@ -107,7 +113,9 @@ import { accountGetAccountBalance } from "payle-docs/funcs/accountGetAccountBala
 
 // Use `PayleCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const payle = new PayleCore();
+const payle = new PayleCore({
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
 
 async function run() {
   const res = await accountGetAccountBalance(payle);
@@ -152,7 +160,9 @@ Obter taxas da conta
 ```typescript
 import { Payle } from "payle-docs";
 
-const payle = new Payle();
+const payle = new Payle({
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
 
 async function run() {
   const result = await payle.account.getAccountFees();
@@ -174,7 +184,9 @@ import { accountGetAccountFees } from "payle-docs/funcs/accountGetAccountFees.js
 
 // Use `PayleCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const payle = new PayleCore();
+const payle = new PayleCore({
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
 
 async function run() {
   const res = await accountGetAccountFees(payle);

@@ -5,3 +5,4 @@
 export * from "./account.js";
 export * from "./accountbalance.js";
 export * from "./accountfees.js";
+export * from "./security.js";

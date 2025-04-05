@@ -29,3 +29,13 @@ Based on:
 - [typescript v0.0.7] .
 ### Releases
 - [NPM v0.0.7] https://www.npmjs.com/package/payle-docs/v/0.0.7 - .
+
+## 2025-04-05 01:54:12
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.529.1 (2.566.5) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.1.0] .
+### Releases
+- [NPM v0.1.0] https://www.npmjs.com/package/payle-docs/v/0.1.0 - .

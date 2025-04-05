@@ -13,6 +13,7 @@ Payle API: Documentação da API do Payle.
   * [SDK Installation](#sdk-installation)
   * [Requirements](#requirements)
   * [SDK Example Usage](#sdk-example-usage)
+  * [Authentication](#authentication)
   * [Available Resources and Operations](#available-resources-and-operations)
   * [Standalone functions](#standalone-functions)
   * [Retries](#retries)
@@ -79,7 +80,8 @@ Add the following server definition to your `claude_desktop_config.json` file:
       "args": [
         "-y", "--package", "payle-docs",
         "--",
-        "mcp", "start"
+        "mcp", "start",
+        "--api-key-auth", "..."
       ]
     }
   }
@@ -101,7 +103,8 @@ Create a `.cursor/mcp.json` file in your project root with the following content
       "args": [
         "-y", "--package", "payle-docs",
         "--",
-        "mcp", "start"
+        "mcp", "start",
+        "--api-key-auth", "..."
       ]
     }
   }
@@ -155,7 +158,9 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 ```typescript
 import { Payle } from "payle-docs";
 
-const payle = new Payle();
+const payle = new Payle({
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
 
 async function run() {
   const result = await payle.account.getAccount();
@@ -168,6 +173,37 @@ run();
 
 ```
 <!-- End SDK Example Usage [usage] -->
+
+<!-- Start Authentication [security] -->
+## Authentication
+
+### Per-Client Security Schemes
+
+This SDK supports the following security scheme globally:
+
+| Name         | Type   | Scheme  |
+| ------------ | ------ | ------- |
+| `apiKeyAuth` | apiKey | API key |
+
+To authenticate with the API the `apiKeyAuth` parameter must be set when initializing the SDK client instance. For example:
+```typescript
+import { Payle } from "payle-docs";
+
+const payle = new Payle({
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const result = await payle.account.getAccount();
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+
+```
+<!-- End Authentication [security] -->
 
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
@@ -216,7 +252,9 @@ To change the default retry strategy for a single API call, simply provide a ret
 ```typescript
 import { Payle } from "payle-docs";
 
-const payle = new Payle();
+const payle = new Payle({
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
 
 async function run() {
   const result = await payle.account.getAccount({
@@ -255,6 +293,7 @@ const payle = new Payle({
     },
     retryConnectionErrors: false,
   },
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -282,7 +321,9 @@ If the request fails due to, for example 4XX or 5XX status codes, it will throw 
 import { Payle } from "payle-docs";
 import { SDKValidationError } from "payle-docs/models/errors";
 
-const payle = new Payle();
+const payle = new Payle({
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
 
 async function run() {
   let result;
@@ -337,34 +378,6 @@ In some rare cases, the SDK can fail to get a response from the server or even m
 <!-- Start Server Selection [server] -->
 ## Server Selection
 
-### Server Variables
-
-The default server `https://api.payle.digital` contains variables and is set to `https://api.payle.digital` by default. To override default values, the following parameters are available when initializing the SDK client instance:
-
-| Variable  | Parameter        | Default | Description           |
-| --------- | ---------------- | ------- | --------------------- |
-| `api_key` | `apiKey: string` | `""`    | Chave de autenticação |
-
-#### Example
-
-```typescript
-import { Payle } from "payle-docs";
-
-const payle = new Payle({
-  apiKey: "279811",
-});
-
-async function run() {
-  const result = await payle.account.getAccount();
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-
-```
-
 ### Override Server URL Per-Client
 
 The default server can be overridden globally by passing a URL to the `serverURL: string` optional parameter when initializing the SDK client instance. For example:
@@ -373,6 +386,7 @@ import { Payle } from "payle-docs";
 
 const payle = new Payle({
   serverURL: "https://api.payle.digital",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {

@@ -18,15 +18,13 @@ export const ServerList = [
 ] as const;
 
 export type SDKOptions = {
+  apiKeyAuth?: string | (() => Promise<string>) | undefined;
+
   httpClient?: HTTPClient;
   /**
    * Allows overriding the default server used by the SDK
    */
   serverIdx?: number | undefined;
-  /**
-   * Sets the api_key variable for url substitution
-   */
-  apiKey?: string | undefined;
   /**
    * Allows overriding the default server URL used by the SDK
    */
@@ -42,12 +40,7 @@ export type SDKOptions = {
 export function serverURLFromOptions(options: SDKOptions): URL | null {
   let serverURL = options.serverURL;
 
-  const serverParams: Params[] = [
-    {
-      "api_key": options.apiKey ?? "",
-    },
-  ];
-  let params: Params = {};
+  const params: Params = {};
 
   if (!serverURL) {
     const serverIdx = options.serverIdx ?? 0;
@@ -55,7 +48,6 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
       throw new Error(`Invalid server index ${serverIdx}`);
     }
     serverURL = ServerList[serverIdx] || "";
-    params = serverParams[serverIdx] || {};
   }
 
   const u = pathToFunc(serverURL)(params);
@@ -65,7 +57,7 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
   language: "typescript",
   openapiDocVersion: "1.0.0",
-  sdkVersion: "0.0.7",
-  genVersion: "2.562.2",
-  userAgent: "speakeasy-sdk/typescript 0.0.7 2.562.2 1.0.0 payle-docs",
+  sdkVersion: "0.1.0",
+  genVersion: "2.566.5",
+  userAgent: "speakeasy-sdk/typescript 0.1.0 2.566.5 1.0.0 payle-docs",
 } as const;
